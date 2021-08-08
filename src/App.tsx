@@ -1,7 +1,13 @@
 import { Routes } from './routes';
+import { GlobalStyles } from './styles/globalStyles';
 
 function App(): JSX.Element {
-  return <Routes />;
+  return (
+    <>
+      <GlobalStyles />
+      <Routes />
+    </>
+  );
 }
 
 export default App;
