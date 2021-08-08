@@ -33,6 +33,29 @@ export const Container = styled.div`
       flex-direction: column;
       width: 80%;
       margin-top: 28px;
+
+      .form--inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+      }
+
+      .form--misc {
+        display: flex;
+        justify-content: space-between;
+
+        .misc--links {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 500;
+          }
+        }
+      }
     }
   }
 
