@@ -38,7 +38,14 @@ export function Login(): JSX.Element {
       </main>
 
       <aside>
-        <h2>Muito mais que um conciliador financeiro!</h2>
+        <div className="content">
+          <h2>Muito mais que um conciliador financeiro!</h2>
+          <p>
+            A melhor ferramenta no mercado e a única com processo automatizado,
+            que compara as informações entre Plataformas, MarketPlaces,
+            Transportadoras, Meios de Pagamento e Instituições Financeiras!
+          </p>
+        </div>
       </aside>
     </Container>
   );

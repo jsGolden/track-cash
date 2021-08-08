@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import backgroundImg from '../../assets/images/background.png';
+
 export const Container = styled.div`
   display: flex;
   align-items: stretch;
@@ -60,10 +62,54 @@ export const Container = styled.div`
   }
 
   aside {
+    position: relative;
     flex: 8;
-    background: var(--orange);
 
-    @media (max-width: 760px) {
+    background-image: url('${backgroundImg}');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--orange);
+      opacity: 0.85;
+    }
+
+    .content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      color: var(--light);
+
+      h2 {
+        font-size: 4.8rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 6rem;
+      }
+
+      p {
+        width: 90%;
+        max-width: 500px;
+        font-size: 1.8rem;
+        line-height: 2.1rem;
+        text-align: justify;
+      }
+    }
+
+    @media (max-width: 860px) {
       display: none;
     }
   }

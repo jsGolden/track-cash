@@ -2,11 +2,11 @@ import { CheckboxContainer } from './styles';
 
 type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-export function Checkbox(): JSX.Element {
+export function Checkbox({ ...rest }: CheckboxProps): JSX.Element {
   return (
     <CheckboxContainer>
       Lembre-se
-      <input type="checkbox" />
+      <input type="checkbox" {...rest} />
       <span />
     </CheckboxContainer>
   );

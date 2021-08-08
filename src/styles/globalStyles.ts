@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     --green-dark: #229954;
   }
 
-  html, body, input, button, textarea {
+  html, body, input, button, textarea, p {
     font: 400 1.6rem 'Ubuntu', sans-serif;
   }
 
