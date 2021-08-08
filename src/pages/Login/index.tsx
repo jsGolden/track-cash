@@ -1,6 +1,7 @@
 import { Container } from './styles';
 
 import logoImg from '../../assets/images/logo.svg';
+import { PrimaryButton } from '../../components/PrimaryButton.tsx';
 
 export function Login(): JSX.Element {
   return (
@@ -14,7 +15,8 @@ export function Login(): JSX.Element {
         <form>
           <input type="text" placeholder="Digite seu email" />
           <input type="text" placeholder="Digite sua senha" />
-          <input type="submit" value="Entrar" />
+
+          <PrimaryButton text="Entrar" type="submit" />
         </form>
       </main>
 
