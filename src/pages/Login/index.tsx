@@ -1,3 +1,6 @@
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import { Container } from './styles';
 
 import logoImg from '../../assets/images/logo.svg';
@@ -7,6 +10,33 @@ import { Input } from '../../components/Input';
 import { Checkbox } from '../../components/Checkbox';
 
 export function Login(): JSX.Element {
+  const validationSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email('Email inválido')
+      .required('Preenchimento obrigatório'),
+    password: yup.string().required('Preenchimento obrigatório'),
+  });
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    onSubmit: formValues => {
+      console.log(formValues);
+    },
+    validationSchema,
+    initialValues: {
+      email: '',
+      password: '',
+    },
+  });
+
   return (
     <Container>
       <main>
@@ -15,16 +45,38 @@ export function Login(): JSX.Element {
           <h1>Fazer login no TrackCash:</h1>
         </header>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form--inputs">
-            <Input icon="email" type="email" placeholder="Digite seu email" />
+            <Input
+              icon="email"
+              type="email"
+              name="email"
+              placeholder="Digite seu email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+            />
+            {errors.email && touched.email && (
+              <span className="form--error">{errors.email}</span>
+            )}
 
             <Input
               icon="password"
               type="password"
+              name="password"
               placeholder="Digite sua senha"
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-            <PrimaryButton text="Entrar" type="submit" />
+            {errors.password && touched.password && (
+              <span className="form--error">{errors.password}</span>
+            )}
+
+            <PrimaryButton
+              text="Entrar"
+              type="submit"
+              isLoading={isSubmitting}
+            />
 
             <div className="form--misc">
               <Checkbox />

@@ -42,6 +42,13 @@ export const Container = styled.div`
         gap: 2.4rem;
       }
 
+      .form--error {
+        color: var(--error);
+        font-size: 1.4rem;
+        margin-top: -2rem;
+        font-weight: 500;
+      }
+
       .form--misc {
         display: flex;
         justify-content: space-between;
@@ -84,6 +91,8 @@ export const Container = styled.div`
       position: absolute;
       top: 0;
       bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 1;
 
       display: flex;
