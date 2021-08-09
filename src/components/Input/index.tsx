@@ -12,11 +12,16 @@ const icons = {
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: 'email' | 'password';
+  isError?: boolean;
 }
 
-export function Input({ icon, ...rest }: InputProps): JSX.Element {
+export function Input({
+  icon,
+  isError = false,
+  ...rest
+}: InputProps): JSX.Element {
   return (
-    <InputContainer>
+    <InputContainer isError={isError}>
       <input type="text" {...rest} />
       <img src={icons[icon]} alt="ícone" />
     </InputContainer>

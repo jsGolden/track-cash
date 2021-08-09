@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import { boolean } from 'yup/lib/locale';
 
-export const InputContainer = styled.div`
+interface InputContainerProps {
+  readonly isError?: boolean;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +13,7 @@ export const InputContainer = styled.div`
   background: var(--background);
   border-radius: 4px;
   padding-right: 1.8rem;
+  ${props => props.isError && 'border: 2px solid var(--error);'}
 
   &:focus-within {
     border: 2px solid var(--orange);

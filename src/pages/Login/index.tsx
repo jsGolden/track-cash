@@ -52,6 +52,7 @@ export function Login(): JSX.Element {
               type="email"
               name="email"
               placeholder="Digite seu email"
+              isError={!!errors.email && touched.email}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
@@ -65,8 +66,10 @@ export function Login(): JSX.Element {
               type="password"
               name="password"
               placeholder="Digite sua senha"
+              isError={!!errors.password && touched.password}
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.password}
             />
             {errors.password && touched.password && (
               <span className="form--error">{errors.password}</span>
