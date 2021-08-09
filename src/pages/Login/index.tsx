@@ -17,6 +17,7 @@ export function Login(): JSX.Element {
       .email('Email inválido')
       .required('Preenchimento obrigatório'),
     password: yup.string().required('Preenchimento obrigatório'),
+    rememberMe: yup.bool(),
   });
 
   const { login } = useAuth();
@@ -31,13 +32,14 @@ export function Login(): JSX.Element {
     isSubmitting,
   } = useFormik({
     onSubmit: formValues => {
-      const { email, password } = formValues;
-      login(email, password);
+      const { email, password, rememberMe } = formValues;
+      login(email, password, rememberMe);
     },
     validationSchema,
     initialValues: {
       email: '',
       password: '',
+      rememberMe: false,
     },
   });
 
@@ -86,7 +88,12 @@ export function Login(): JSX.Element {
             />
 
             <div className="form--misc">
-              <Checkbox />
+              <Checkbox
+                name="rememberMe"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                checked={values.rememberMe}
+              />
               <div className="misc--links">
                 <a href="/">Recuperar senha</a>
                 <a href="/">Cadastre-se</a>

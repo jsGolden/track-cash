@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode } from 'react';
 
 interface AuthContextData {
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string, remember?: boolean) => void;
   logout: () => void;
   currentToken: string;
 }
@@ -19,10 +19,15 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     localStorage.getItem(tokenNamespace) || '',
   );
 
-  function login(email: string, password: string) {
+  function login(email: string, password: string, remember = false) {
     const token = btoa(`${email}:${password}`);
     setCurrentToken(token);
-    localStorage.setItem(tokenNamespace, token);
+
+    if (remember) {
+      localStorage.setItem(tokenNamespace, token);
+    } else {
+      localStorage.removeItem(tokenNamespace);
+    }
   }
 
   function logout() {
