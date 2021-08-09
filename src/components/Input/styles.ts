@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { boolean } from 'yup/lib/locale';
 
 interface InputContainerProps {
   readonly isError?: boolean;

@@ -8,6 +8,7 @@ import logoImg from '../../assets/images/logo.svg';
 import { PrimaryButton } from '../../components/PrimaryButton.tsx';
 import { Input } from '../../components/Input';
 import { Checkbox } from '../../components/Checkbox';
+import { useAuth } from '../../hooks/useAuth';
 
 export function Login(): JSX.Element {
   const validationSchema = yup.object().shape({
@@ -17,6 +18,8 @@ export function Login(): JSX.Element {
       .required('Preenchimento obrigatório'),
     password: yup.string().required('Preenchimento obrigatório'),
   });
+
+  const { login } = useAuth();
 
   const {
     values,
@@ -28,7 +31,8 @@ export function Login(): JSX.Element {
     isSubmitting,
   } = useFormik({
     onSubmit: formValues => {
-      console.log(formValues);
+      const { email, password } = formValues;
+      login(email, password);
     },
     validationSchema,
     initialValues: {

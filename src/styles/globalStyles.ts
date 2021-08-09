@@ -38,4 +38,13 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: var(--background);
   }
+
+  /* Removes input background color when autocomplete */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active
+  {
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `;
